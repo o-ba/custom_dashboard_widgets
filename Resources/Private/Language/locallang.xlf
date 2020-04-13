@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0" xmlns:t3="http://typo3.org/schemas/xliff">>
+	<file t3:id="1586793500" source-language="en" datatype="plaintext" original="messages" date="2020-04-13T15:58:20Z" product-name="custom_dashboard_widgets">
+		<header/>
+		<body>
+			<trans-unit id="widgets.extensionInformation.title" xml:space="preserve">
+				<source>Extension information</source>
+			</trans-unit>
+			<trans-unit id="widgets.extensionInformation.description" xml:space="preserve">
+				<source>Shows some information regarding this extension.</source>
+			</trans-unit>
+			<trans-unit id="widgets.extensionInformation.text" xml:space="preserve">
+				<source>
+                    This extension is meant as an example extension on how to add custom widgets, widget groups and
+                    presets to the new dashboard module.
+                </source>
+			</trans-unit>
+			<trans-unit id="widgets.localExtensions.title" xml:space="preserve">
+				<source>3rd party extensions</source>
+			</trans-unit>
+			<trans-unit id="widgets.localExtensions.subtitle" xml:space="preserve">
+				<source>Amount of 3rd party extensions</source>
+			</trans-unit>
+			<trans-unit id="widgets.localExtensions.description" xml:space="preserve">
+				<source>Shows the amount of 3rd party extensions present in the system.</source>
+			</trans-unit>
+            <trans-unit id="widgets.typeOfPages.title" xml:space="preserve">
+				<source>Type of pages</source>
+			</trans-unit>
+            <trans-unit id="widgets.typeOfPages.description" xml:space="preserve">
+				<source>Shows the amount of pages per doktype in the system.</source>
+			</trans-unit>
+            <trans-unit id="widgets.typeOfPages.1" xml:space="preserve">
+				<source>Default</source>
+			</trans-unit>
+            <trans-unit id="widgets.typeOfPages.3" xml:space="preserve">
+				<source>Link</source>
+			</trans-unit>
+            <trans-unit id="widgets.typeOfPages.4" xml:space="preserve">
+				<source>Shortcut</source>
+			</trans-unit>
+            <trans-unit id="widgets.typeOfPages.6" xml:space="preserve">
+				<source>BE user section</source>
+			</trans-unit>
+            <trans-unit id="widgets.typeOfPages.7" xml:space="preserve">
+				<source>Mountpoint</source>
+			</trans-unit>
+            <trans-unit id="widgets.typeOfPages.199" xml:space="preserve">
+				<source>Spacer</source>
+			</trans-unit>
+            <trans-unit id="widgets.typeOfPages.254" xml:space="preserve">
+				<source>Folder</source>
+			</trans-unit>
+            <trans-unit id="widgets.typeOfPages.255" xml:space="preserve">
+				<source>Recycler</source>
+			</trans-unit>
+            <trans-unit id="widgets.t3blog.title" xml:space="preserve">
+				<source>TYPO3 blog articles</source>
+			</trans-unit>
+            <trans-unit id="widgets.t3blog.description" xml:space="preserve">
+				<source>Shows a list of blog articles from TYPO3.</source>
+			</trans-unit>
+            <trans-unit id="widgets.t3blog.moreItems" xml:space="preserve">
+				<source>More TYPO3 blog articles</source>
+			</trans-unit>
+
+			<trans-unit id="presets.custom.title" xml:space="preserve">
+				<source>Custom dashboard</source>
+			</trans-unit>
+			<trans-unit id="presets.custom.description" xml:space="preserve">
+				<source>Create a new dashboard with custom TYPO3 widgets on it.</source>
+			</trans-unit>
+
+			<trans-unit id="widget_group.custom.title" xml:space="preserve">
+				<source>Custom widgets</source>
+ 			</trans-unit>
+		</body>
+	</file>
+</xliff>

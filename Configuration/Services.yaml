@@ -1,0 +1,84 @@
+services:
+
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Bo\CustomDashboardWidgets\:
+    resource: '../Classes/*'
+
+  dashboard.buttons.t3blog:
+    class: 'TYPO3\CMS\Dashboard\Widgets\Provider\ButtonProvider'
+    arguments:
+      $title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.t3blog.moreItems'
+      $link: 'https://typo3.com/blog'
+      $target: '_blank'
+
+  dashboard.widget.extensionInformation:
+    class: 'Bo\CustomDashboardWidgets\Widgets\ExtensionInformationWidget'
+    arguments:
+      $view: '@dashboard.views.widget'
+      $options:
+        icon: 'tx-custom_dashboard_widgets-icon'
+        text: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.extensionInformation.text'
+    tags:
+      - name: dashboard.widget
+        identifier: 'extensionInformation'
+        groupNames: 'custom'
+        title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.extensionInformation.title'
+        description: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.extensionInformation.description'
+        iconIdentifier: 'tx-custom_dashboard_widgets-icon'
+        height: 'small'
+        width: 'small'
+
+  dashboard.widget.typeOfPages:
+    class: 'TYPO3\CMS\Dashboard\Widgets\DoughnutChartWidget'
+    arguments:
+      $view: '@dashboard.views.widget'
+      $dataProvider: '@Bo\CustomDashboardWidgets\Widgets\Provider\TypeOfPagesChartDataProvider'
+    tags:
+      - name: dashboard.widget
+        identifier: 'typeOfPages'
+        groupNames: 'custom'
+        title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.typeOfPages.title'
+        description: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.typeOfPages.description'
+        iconIdentifier: 'tx-custom_dashboard_widgets-icon'
+        additionalCssClasses: 'dashboard-item--chart'
+        height: 'medium'
+        width: 'medium'
+
+  dashboard.widget.localExtensions:
+    class: 'TYPO3\CMS\Dashboard\Widgets\NumberWithIconWidget'
+    arguments:
+      $dataProvider: '@Bo\CustomDashboardWidgets\Widgets\Provider\LocalExtensionsDataProvider'
+      $view: '@dashboard.views.widget'
+      $options:
+        title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.localExtensions.title'
+        subtitle: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.localExtensions.subtitle'
+        icon: 'tx-custom_dashboard_widgets-extensions-icon'
+    tags:
+      - name: dashboard.widget
+        identifier: 'localExtensions'
+        groupNames: 'custom'
+        title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.localExtensions.title'
+        description: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.localExtensions.description'
+        iconIdentifier: 'tx-custom_dashboard_widgets-icon'
+
+  dashboard.widget.t3blog:
+    class: 'TYPO3\CMS\Dashboard\Widgets\RssWidget'
+    arguments:
+      $view: '@dashboard.views.widget'
+      $cache: '@cache.dashboard.rss'
+      $buttonProvider: '@dashboard.buttons.t3blog'
+      $options:
+        feedUrl: 'https://typo3.com/blog/blog.recent.xml'
+    tags:
+      - name: dashboard.widget
+        identifier: 't3blog'
+        groupNames: 'custom'
+        title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.t3blog.title'
+        description: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.t3blog.description'
+        iconIdentifier: 'tx-custom_dashboard_widgets-icon'
+        height: 'large'
+        width: 'medium'

@@ -1,0 +1,21 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Widget/Widget"/>
+<f:section name="main">
+
+    <div class="row">
+        <f:if condition="{configuration.iconIdentifier}">
+            <div class="col-sm-2">
+                <core:icon identifier="{options.icon}" size="large" />
+            </div>
+        </f:if>
+        <f:if condition="{options.text}">
+            <div class="col-sm-10">
+                <p>
+                    <f:translate key="{options.text}" extensionName="customDashboardWidgets"/>
+                </p>
+            </div>
+        </f:if>
+    </div>
+
+</f:section>
+</html>

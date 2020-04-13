@@ -1,0 +1,27 @@
+{
+	"name": "o-ba/custom_dashboard_widgets",
+	"license": "GPL-3.0",
+	"keywords": ["TYPO3 CMS"],
+	"authors": [
+		{
+			"name": "Oliver Bartsch",
+			"email": "bo@cedev.de"
+		}
+	],
+	"description": "Set of custom widgets for the new TYPO3 dashboard module.",
+	"require-dev": {
+		"roave/security-advisories": "dev-master"
+	},
+	"require": {
+		"php": ">=7.2.0",
+		"typo3/cms-core": "^10.4",
+		"typo3/cms-dashboard": "^10.4"
+    },
+	"type": "typo3-cms-extension",
+	"version": "0.1.0",
+    "autoload": {
+        "psr-4": {
+            "Bo\\CustomDashboardWidgets\\": "Classes"
+        }
+    }
+}
