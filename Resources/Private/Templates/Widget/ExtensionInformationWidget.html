@@ -1,21 +1,29 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Widget/Widget"/>
 <f:section name="main">
-
     <div class="row">
         <f:if condition="{options.icon}">
-            <div class="col-sm-2">
-                <core:icon identifier="{options.icon}" size="large" />
+            <div class="col-sm-1">
+                <core:icon identifier="{options.icon}" size="default" alternativeMarkupIdentifier="inline"/>
             </div>
         </f:if>
         <f:if condition="{options.text}">
-            <div class="col-sm-10">
+            <div class="col-sm-11">
                 <p>
                     <f:translate key="{options.text}" extensionName="customDashboardWidgets"/>
                 </p>
             </div>
         </f:if>
     </div>
-
+</f:section>
+<f:section name="footer">
+    <f:if condition="{button}">
+        <a href="{button.link}" target="{button.target}" class="widget-cta">
+            <f:if condition="{button.icon}">
+                <core:icon identifier="{button.icon}" size="small" alternativeMarkupIdentifier="inline"/>
+            </f:if>
+            &nbsp;{f:translate(key: button.text, extensionName: 'customDashboardWidgets')}
+        </a>
+    </f:if>
 </f:section>
 </html>

@@ -9,10 +9,14 @@
 			<trans-unit id="widgets.extensionInformation.description" xml:space="preserve">
 				<source>Shows some information regarding this extension.</source>
 			</trans-unit>
+			<trans-unit id="widgets.extensionInformation.codeInsights" xml:space="preserve">
+				<source>Have a look at the code</source>
+			</trans-unit>
 			<trans-unit id="widgets.extensionInformation.text" xml:space="preserve">
 				<source>
-                    This extension is meant as an example extension on how to add custom widgets, widget groups and
-                    presets to the new dashboard module.
+                    This extension is an example on how to add custom widgets (including custom templates),
+                    widget groups, presets and how to create custom services or extend existing ones. You can use it
+                    as a kickstarter for your own widgets and dashboards.
                 </source>
 			</trans-unit>
 			<trans-unit id="widgets.localExtensions.title" xml:space="preserve">

@@ -15,10 +15,19 @@ services:
       $link: 'https://typo3.com/blog'
       $target: '_blank'
 
+  dashboard.extendedButtons.extensionInformation:
+    class: 'Bo\CustomDashboardWidgets\Widgets\Provider\ExtendedButtonProvider'
+    arguments:
+      $title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.extensionInformation.codeInsights'
+      $link: 'https://github.com/o-ba/custom_dashboard_widgets'
+      $target: '_blank'
+      $icon: 'actions-merge'
+
   dashboard.widget.extensionInformation:
     class: 'Bo\CustomDashboardWidgets\Widgets\ExtensionInformationWidget'
     arguments:
       $view: '@dashboard.views.widget'
+      $buttonProvider: '@dashboard.extendedButtons.extensionInformation'
       $options:
         icon: 'tx-custom_dashboard_widgets-icon'
         text: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.extensionInformation.text'
@@ -30,7 +39,7 @@ services:
         description: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.extensionInformation.description'
         iconIdentifier: 'tx-custom_dashboard_widgets-icon'
         height: 'small'
-        width: 'small'
+        width: 'medium'
 
   dashboard.widget.typeOfPages:
     class: 'TYPO3\CMS\Dashboard\Widgets\DoughnutChartWidget'
