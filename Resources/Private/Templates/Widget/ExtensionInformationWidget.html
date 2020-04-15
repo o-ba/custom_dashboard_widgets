@@ -20,9 +20,9 @@
     <f:if condition="{button}">
         <a href="{button.link}" target="{button.target}" class="widget-cta">
             <f:if condition="{button.icon}">
-                <core:icon identifier="{button.icon}" size="small" alternativeMarkupIdentifier="inline"/>
+                <core:icon identifier="{button.icon}" size="small" alternativeMarkupIdentifier="inline"/>&nbsp;
             </f:if>
-            &nbsp;{f:translate(key: button.text, extensionName: 'customDashboardWidgets')}
+            {f:translate(key: button.text, extensionName: 'customDashboardWidgets')}
         </a>
     </f:if>
 </f:section>
