@@ -15,7 +15,7 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
  *
  * @author Oliver Bartsch <bo@cedev.de>
  */
-final class ExtensionInformationWidget implements WidgetInterface
+class ExtensionInformationWidget implements WidgetInterface
 {
     /**
      * @var WidgetConfigurationInterface

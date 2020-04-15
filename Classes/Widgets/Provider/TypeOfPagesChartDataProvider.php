@@ -18,7 +18,7 @@ use TYPO3\CMS\Dashboard\Widgets\Interfaces\ChartDataProviderInterface;
  *
  * @author Oliver Bartsch <bo@cedev.de>
  */
-final class TypeOfPagesChartDataProvider implements ChartDataProviderInterface
+class TypeOfPagesChartDataProvider implements ChartDataProviderInterface
 {
     private const DOKTYPES_TO_CHECK = [
         PageRepository::DOKTYPE_DEFAULT,

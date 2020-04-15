@@ -12,7 +12,7 @@ use TYPO3\CMS\Extensionmanager\Utility\ListUtility;
  *
  * @author Oliver Bartsch <bo@cedev.de>
  */
-final class LocalExtensionsDataProvider implements NumberWithIconDataProviderInterface
+class LocalExtensionsDataProvider implements NumberWithIconDataProviderInterface
 {
     public function getNumber(): int
     {
