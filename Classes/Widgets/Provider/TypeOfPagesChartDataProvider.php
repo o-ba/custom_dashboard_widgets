@@ -50,13 +50,13 @@ final class TypeOfPagesChartDataProvider implements ChartDataProviderInterface
     public function getChartData(): array
     {
         $labels = [];
-        $datasets = [];
+        $data = [];
 
         foreach (self::DOKTYPES_TO_CHECK as $doktype) {
             $amount = $this->getAmountOfPagesByDoktype($doktype);
-            if ((bool)$amount) {
+            if ($amount) {
                 $labels[] = \htmlspecialchars($this->languageService->sL('LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.typeOfPages.' . $doktype));
-                $datasets[] = $amount;
+                $data[] = $amount;
             }
         }
 
@@ -65,9 +65,9 @@ final class TypeOfPagesChartDataProvider implements ChartDataProviderInterface
             'datasets' => [
                 [
                     'backgroundColor' => WidgetApi::getDefaultChartColors(),
-                    'data' => $datasets
+                    'data' => $data
                 ]
-            ],
+            ]
         ];
     }
 
