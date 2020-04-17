@@ -27,16 +27,4 @@ class ExtendedButtonProvider extends ButtonProvider
     {
         return $this->icon;
     }
-
-    public function getExtendedButtonConfiguration(): array
-    {
-        return ($this->getTitle() === '' || $this->getLink() === '')
-            ? []
-            : [
-                'text' => $this->getTitle(),
-                'link' => $this->getLink(),
-                'target' => $this->getTarget(),
-                'icon' => $this->getIcon()
-            ];
-    }
 }

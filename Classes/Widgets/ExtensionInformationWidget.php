@@ -3,11 +3,9 @@ declare(strict_types=1);
 
 namespace Bo\CustomDashboardWidgets\Widgets;
 
-use Bo\CustomDashboardWidgets\Widgets\Provider\ExtendedButtonProvider;
-use TYPO3\CMS\Dashboard\Utility\ButtonUtility;
-use TYPO3\CMS\Dashboard\Widgets\Interfaces\ButtonProviderInterface;
-use TYPO3\CMS\Dashboard\Widgets\Interfaces\WidgetConfigurationInterface;
-use TYPO3\CMS\Dashboard\Widgets\Interfaces\WidgetInterface;
+use TYPO3\CMS\Dashboard\Widgets\ButtonProviderInterface;
+use TYPO3\CMS\Dashboard\Widgets\WidgetConfigurationInterface;
+use TYPO3\CMS\Dashboard\Widgets\WidgetInterface;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
@@ -54,17 +52,10 @@ class ExtensionInformationWidget implements WidgetInterface
         $this->view->setTemplate('Widget/ExtensionInformationWidget');
         $this->view->assignMultiple([
             'configuration' => $this->configuration,
-            'button' => $this->getButtonConfiguration(),
+            'button' => $this->buttonProvider,
             'options' => $this->options
         ]);
 
         return $this->view->render();
-    }
-
-    private function getButtonConfiguration(): array
-    {
-        return $this->buttonProvider instanceof ExtendedButtonProvider
-            ? $this->buttonProvider->getExtendedButtonConfiguration()
-            : ButtonUtility::generateButtonConfig($this->buttonProvider);
     }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Bo\CustomDashboardWidgets\Widgets\Provider;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Dashboard\Widgets\Interfaces\NumberWithIconDataProviderInterface;
+use TYPO3\CMS\Dashboard\Widgets\NumberWithIconDataProviderInterface;
 use TYPO3\CMS\Extensionmanager\Utility\ListUtility;
 
 /**

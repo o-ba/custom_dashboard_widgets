@@ -22,7 +22,7 @@
             <f:if condition="{button.icon}">
                 <core:icon identifier="{button.icon}" size="small" alternativeMarkupIdentifier="inline"/>&nbsp;
             </f:if>
-            {f:translate(key: button.text, extensionName: 'customDashboardWidgets')}
+            {f:translate(id: button.title, default: button.title, extensionName: 'customDashboardWidgets')}
         </a>
     </f:if>
 </f:section>
