@@ -28,7 +28,7 @@ This extension is intended as an example extension for adding custom widgets (in
 groups, custom dashboard presets and TSconfig presets for new editors.
 
 ### Currently included widgets
-- ``extensionInformation``: Simple information widget with custom template
+- ``extensionInformation``: Simple information widget with a custom template using an extended button provider
 - ``typeOfPages``: Doughnut chart showing amount of pages per doktype
 - ``localExtensions``: Showing the amount of 3rd party extensions in the installation
 - ``t3blog``: Listing of blog articles from [typo3.com][5]
