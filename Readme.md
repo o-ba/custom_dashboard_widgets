@@ -35,7 +35,7 @@ This extension is intended as an example extension for
 
 You can find more information in the [official documentation][5].
 
-⚠️ **Important*️* ⚠️
+**Important*️*
 The included widgets and data providers **don't** evaluate any permissions! Therefore the widgets and data providers
 shouldn't be activated for editors and only be used by admins.
 
