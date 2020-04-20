@@ -11,7 +11,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * Provides records based on following configuration:
  * - table           string         The table the records should be fetched from
- * - limit           int            The maximum number of records to be fetched
+ * - limit           int            The maximum number of records to be fetched (Defaul: 5)
  * - orderField      string         The order field (Defaul: `uid`)
  * - order           string         The order direction (Default: `DESC`)
  *

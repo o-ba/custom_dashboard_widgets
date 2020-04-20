@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Bo\CustomDashboardWidgets\Widgets;
 
+use TYPO3\CMS\Dashboard\Widgets\AdditionalCssInterface;
 use TYPO3\CMS\Dashboard\Widgets\ButtonProviderInterface;
 use TYPO3\CMS\Dashboard\Widgets\ListDataProviderInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetConfigurationInterface;
@@ -14,7 +15,7 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
  *
  * @author Oliver Bartsch <bo@cedev.de>
  */
-class ListOfFailedSchedulerTasksWidget implements WidgetInterface
+class ListOfFailedSchedulerTasksWidget implements WidgetInterface, AdditionalCssInterface
 {
     /** @var WidgetConfigurationInterface */
     private $configuration;
@@ -56,5 +57,13 @@ class ListOfFailedSchedulerTasksWidget implements WidgetInterface
         ]);
 
         return $this->view->render();
+    }
+
+    public function getCssFiles(): array
+    {
+        return [
+            'EXT:custom_dashboard_widgets/Resources/Public/Css/Widget/FailedSchedulerTasksWidget.css',
+            'EXT:custom_dashboard_widgets/Resources/Public/Css/General/NoItemsFound.css'
+        ];
     }
 }

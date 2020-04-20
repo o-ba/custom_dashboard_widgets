@@ -1,0 +1,11 @@
+.row.widget-no-items-found{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.row.widget-no-items-found p{
+    text-align: center;
+    font-weight: 900;
+}

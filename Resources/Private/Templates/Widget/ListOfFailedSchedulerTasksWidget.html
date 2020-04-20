@@ -6,41 +6,41 @@
             <div id="list-of-failed-scheduler-tasks-widget" class="widget-table-wrapper">
                 <table class="widget-table">
                     <thead>
-                    <tr>
-                        <th><span><f:translate key="widgets.failedSchedulerTasks.content.task.id" extensionName="CustomDashboardWidgets"/></span></th>
-                        <th><span><f:translate key="widgets.failedSchedulerTasks.content.task.title" extensionName="CustomDashboardWidgets"/></span></th>
-                        <th><span><f:translate key="widgets.failedSchedulerTasks.content.task.additionalInformation" extensionName="CustomDashboardWidgets"/></span></th>
-                        <th><span><f:translate key="widgets.failedSchedulerTasks.content.task.type" extensionName="CustomDashboardWidgets"/></span></th>
-                        <th><span><f:translate key="widgets.failedSchedulerTasks.content.task.executionTime" extensionName="CustomDashboardWidgets"/></span></th>
-                    </tr>
+                        <tr>
+                            <th><span><f:translate key="widgets.failedSchedulerTasks.content.task.id" extensionName="CustomDashboardWidgets"/></span></th>
+                            <th><span><f:translate key="widgets.failedSchedulerTasks.content.task.title" extensionName="CustomDashboardWidgets"/></span></th>
+                            <th><span><f:translate key="widgets.failedSchedulerTasks.content.task.additionalInformation" extensionName="CustomDashboardWidgets"/></span></th>
+                            <th><span><f:translate key="widgets.failedSchedulerTasks.content.task.type" extensionName="CustomDashboardWidgets"/></span></th>
+                            <th><span><f:translate key="widgets.failedSchedulerTasks.content.task.executionTime" extensionName="CustomDashboardWidgets"/></span></th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <f:for each="{tasks}" as="task" key="uid">
-                        <tr>
-                            <td>
-                                {uid}
-                            </td>
-                            <td class="task-information">
-                                <strong>{task.title}</strong>
-                                <f:if condition="{task.description} && {task.title} !== {task.description}">
-                                    <br/>{task.description -> f:format.crop(maxCharacters:50)}
-                                </f:if>
-                            </td>
-                            <td>
-                                {task.additionalInformation}
-                            </td>
-                            <td>
-                                <f:if condition="{task.type}">
-                                    <f:translate key="widgets.failedSchedulerTasks.content.task.type.{task.type}" extensionName="CustomDashboardWidgets"/>
-                                </f:if>
-                            </td>
-                            <td>
-                                <f:if condition="{task.executionTime}">
-                                    {task.executionTime -> f:format.date(format: 'd.m.Y - H:i:s')}
-                                </f:if>
-                            </td>
-                        </tr>
-                    </f:for>
+                        <f:for each="{tasks}" as="task">
+                            <tr>
+                                <td>
+                                    {task.taskUid}
+                                </td>
+                                <td class="task-information">
+                                    <strong>{task.taskTitle}</strong>
+                                    <f:if condition="{task.taskDescription} && {task.taskTitle} !== {task.taskDescription}">
+                                        <br/>{task.taskDescription -> f:format.crop(maxCharacters:50)}
+                                    </f:if>
+                                </td>
+                                <td>
+                                    {task.additionalInformation}
+                                </td>
+                                <td>
+                                    <f:if condition="{task.type}">
+                                        <f:translate key="widgets.failedSchedulerTasks.content.task.type.{task.type}" extensionName="CustomDashboardWidgets"/>
+                                    </f:if>
+                                </td>
+                                <td>
+                                    <f:if condition="{task.executionTime}">
+                                        {task.executionTime -> f:format.date(format: 'd.m.Y - H:i:s')}
+                                    </f:if>
+                                </td>
+                            </tr>
+                        </f:for>
                     </tbody>
                 </table>
             </div>

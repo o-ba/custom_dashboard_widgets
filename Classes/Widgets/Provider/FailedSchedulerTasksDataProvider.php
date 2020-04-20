@@ -36,13 +36,7 @@ class FailedSchedulerTasksDataProvider implements ListDataProviderInterface
         foreach ($tasks as $task) {
             $taskObject = \unserialize($task['serialized_task_object'], ['allowed_classes' => true]);
             if ($taskObject instanceof AbstractTask) {
-                $items[(int)$task['uid']] = [
-                    'title' => $taskObject->getTaskTitle(),
-                    'type' => $taskObject->getType(),
-                    'description' => $taskObject->getTaskDescription(),
-                    'additionalInformation' => $taskObject->getAdditionalInformation(),
-                    'executionTime' => $taskObject->getExecutionTime()
-                ];
+                $items[] = $taskObject;
             }
         }
 

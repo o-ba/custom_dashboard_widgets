@@ -4,7 +4,8 @@ declare(strict_types=1);
 namespace Bo\CustomDashboardWidgets\Widgets;
 
 /**
- * Interface for all data provider which return a list of records
+ * Interface for all data providers which fetches a list
+ * of records from a given table.
  *
  * @author Oliver Bartsch <bo@cedev.de>
  */

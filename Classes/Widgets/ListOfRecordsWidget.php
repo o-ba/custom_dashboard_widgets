@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Bo\CustomDashboardWidgets\Widgets;
 
+use TYPO3\CMS\Dashboard\Widgets\AdditionalCssInterface;
 use TYPO3\CMS\Dashboard\Widgets\ButtonProviderInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetConfigurationInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetInterface;
@@ -13,7 +14,7 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
  *
  * @author Oliver Bartsch <bo@cedev.de>
  */
-class ListOfRecordsWidget implements WidgetInterface
+class ListOfRecordsWidget implements WidgetInterface, AdditionalCssInterface
 {
     /** @var WidgetConfigurationInterface */
     private $configuration;
@@ -49,7 +50,7 @@ class ListOfRecordsWidget implements WidgetInterface
         $recordTable = $this->dataProvider->getTable();
 
         if (!($this->options['titleField'] ?? false)) {
-            $this->options['titleField'] = $GLOBALS['TCA'][$recordTable]['ctrl']['label'];
+            $this->options['titleField'] = $GLOBALS['TCA'][$recordTable]['ctrl']['label'] ?? '';
         }
 
         $this->view->setTemplate('Widget/ListOfRecordsWidget');
@@ -62,5 +63,10 @@ class ListOfRecordsWidget implements WidgetInterface
         ]);
 
         return $this->view->render();
+    }
+
+    public function getCssFiles(): array
+    {
+        return ['EXT:custom_dashboard_widgets/Resources/Public/Css/General/NoItemsFound.css'];
     }
 }

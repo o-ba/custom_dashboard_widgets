@@ -2,7 +2,8 @@
 
 ## 1. Introduction
 
-This extension adds a set of widgets for the new dashboard module, available since TYPO3 10.3.
+This extension adds a set of widgets for the new dashboard module, available since TYPO3 v10.3.
+
 It however only works with TYPO3 v10.4 and higher as the widget registration was [reworked][1] in this release.
 
 **Background**
@@ -36,14 +37,14 @@ This extension is intended as an example extension for
 You can find more information in the [official documentation][6].
 
 #### Important
-The included widgets and data providers **don't** evaluate any permissions! Therefore the widgets and data providers
-shouldn't be activated for editors and only be used by admins.
+The included widgets and data providers **don't** evaluate any permissions! Therefore most of the widgets shouldn't be
+activated for editors and only be used by admins.
 
 ### Included widgets
 - ``extensionInformation``: Simple information widget with a custom template using an extended button provider
 - ``failedSchedulerTasks``: Displays failed tasks and links to the module by using the extended button provider
-- ``recentlyCreatedPages``: Displays a defined number of recently created pages with edit link
-- ``recentlyModifiedContent``: Displays a defined number of recently modified content with edit link
+- ``recentlyCreatedPages``: Displays a defined number of recently created pages with an edit link
+- ``recentlyModifiedContent``: Displays a defined number of recently modified content with an edit link
 - ``localExtensions``: Displays the amount of 3rd party extensions in the installation
 - ``typeOfPages``: Doughnut chart showing amount of pages per page type
 - ``typeOfContent``: Bar chart showing amount of contet elements per content type

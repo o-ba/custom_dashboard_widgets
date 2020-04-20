@@ -11,8 +11,8 @@ use TYPO3\CMS\Dashboard\Widgets\Provider\ButtonProvider;
 /**
  * Provides an extended button with following additional configuration:
  * - icon                  string         Identifier of a icon registered in IconRegistry
- * - moduleExtension       string         Internal module to link
- * - moduleLinkParameters  string         Additional link parameters for a internal module link
+ * - moduleExtension       string         Link to an internal module
+ * - moduleLinkParameters  string         Additional link parameters for a link to an internal module
  *
  * @author Oliver Bartsch <bo@cedev.de>
  */

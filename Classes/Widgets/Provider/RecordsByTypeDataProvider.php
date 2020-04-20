@@ -27,10 +27,10 @@ class RecordsByTypeDataProvider implements ChartDataProviderInterface
     private $table;
 
     /** @var string */
-    private $typeField;
+    private $order;
 
     /** @var string */
-    private $order;
+    private $typeField;
 
     /** @var array */
     private $recordTypes;
@@ -59,7 +59,7 @@ class RecordsByTypeDataProvider implements ChartDataProviderInterface
         $data = [];
 
         foreach ($this->getRecordsGroupedByType() as $item) {
-            $labels[] = $this->getLabelForDoktype((string)$item[$this->typeField]);
+            $labels[] = $this->getLabelForRecordType((string)$item[$this->typeField]);
             $data[] = $item['count'];
         }
 
@@ -89,7 +89,7 @@ class RecordsByTypeDataProvider implements ChartDataProviderInterface
             ->fetchAll();
     }
 
-    private function getLabelForDoktype(string $type): string
+    private function getLabelForRecordType(string $type): string
     {
         foreach ($this->recordTypes as $recordType) {
             if ((string)($recordType[1] ?? '') === $type) {
