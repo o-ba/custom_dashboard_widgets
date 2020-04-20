@@ -3,12 +3,12 @@
 ## 1. Introduction
 
 This extension adds a set of widgets for the new dashboard module, available since TYPO3 10.3.
-This however only works with TYPO3 v10.4 and higher as the widget registration was reworked in this release.
+It however only works with TYPO3 v10.4 and higher as the widget registration was [reworked][1] in this release.
 
 **Background**
 
-This extensions evolves from [t3security_news_widget][1] which is outdated as it uses the old way to register widgets
-and was however already implemented as a [core][2] widget with this [patch][3].
+This extensions evolves from [t3security_news_widget][2] which is outdated as it uses the old way to register widgets
+and was however already implemented as a [core][3] widget with this [patch][4].
 
 ## 2. Installation
 
@@ -18,7 +18,7 @@ If you are using a composer based TYPO3 project just run `composer require o-ba/
 
 #### Installation from TER (TYPO3 Extension Repository)
 
-You can download and install the extension in the extension manager module or download the ZIP file from [typo3.org][4]
+You can download and install the extension in the extension manager module or download the ZIP file from [typo3.org][5]
 and upload it in the extension manager module.
 
 ## 3. Further notice
@@ -33,7 +33,7 @@ This extension is intended as an example extension for
 - adding TSconfig presets for backend users,
 - and some more ...
 
-You can find more information in the [official documentation][5].
+You can find more information in the [official documentation][6].
 
 #### Important
 The included widgets and data providers **don't** evaluate any permissions! Therefore the widgets and data providers
@@ -47,7 +47,7 @@ shouldn't be activated for editors and only be used by admins.
 - ``localExtensions``: Displays the amount of 3rd party extensions in the installation
 - ``typeOfPages``: Doughnut chart showing amount of pages per page type
 - ``typeOfContent``: Bar chart showing amount of contet elements per content type
-- ``t3blog``: Listing of blog articles from [typo3.com][6]
+- ``t3blog``: Listing of blog articles from [typo3.com][7]
 - ``contribute``: Information widget with information on how to contribute
 
 ### Included DataProvider
@@ -68,13 +68,14 @@ shouldn't be activated for editors and only be used by admins.
 
 ## 4. Credits
 
-Icons used in this repository are made by [Freepik][7] from [www.flaticon.com][8]
+Icons used in this repository are made by [Freepik][8] from [www.flaticon.com][9]
 
-[1]: https://github.com/o-ba/t3security_news_widget
-[2]: https://github.com/TYPO3/TYPO3.CMS
-[3]: https://review.typo3.org/c/Packages/TYPO3.CMS/+/63397
-[4]: https://extensions.typo3.org/extension/custom_dashboard_widgets
-[5]: https://docs.typo3.org/c/typo3/cms-dashboard/master/en-us/
-[6]: https://typo3.com/blog
-[7]: https://www.flaticon.com/authors/freepik
-[8]: http://www.flaticon.com
+[1]: https://review.typo3.org/c/Packages/TYPO3.CMS/+/63563
+[2]: https://github.com/o-ba/t3security_news_widget
+[3]: https://github.com/TYPO3/TYPO3.CMS
+[4]: https://review.typo3.org/c/Packages/TYPO3.CMS/+/63397
+[5]: https://extensions.typo3.org/extension/custom_dashboard_widgets
+[6]: https://docs.typo3.org/c/typo3/cms-dashboard/master/en-us/
+[7]: https://typo3.com/blog
+[8]: https://www.flaticon.com/authors/freepik
+[9]: http://www.flaticon.com
