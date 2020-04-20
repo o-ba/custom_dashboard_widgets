@@ -1,0 +1,27 @@
+services:
+
+  dashboard.buttons.t3blog:
+    class: 'TYPO3\CMS\Dashboard\Widgets\Provider\ButtonProvider'
+    arguments:
+      $title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.t3blog.button.title'
+      $link: 'https://typo3.com/blog'
+      $target: '_blank'
+
+  dashboard.widget.t3blog:
+    class: 'TYPO3\CMS\Dashboard\Widgets\RssWidget'
+    arguments:
+      $view: '@dashboard.views.widget'
+      $cache: '@cache.dashboard.rss'
+      $buttonProvider: '@dashboard.buttons.t3blog'
+      $options:
+        feedUrl: 'https://typo3.com/blog/blog.recent.xml'
+    tags:
+      -
+        name: dashboard.widget
+        identifier: 't3blog'
+        groupNames: 'custom'
+        title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.t3blog.title'
+        description: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.t3blog.description'
+        iconIdentifier: 'tx-custom_dashboard_widgets-extension-icon'
+        height: 'large'
+        width: 'medium'

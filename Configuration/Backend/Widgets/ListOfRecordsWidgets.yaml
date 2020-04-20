@@ -1,0 +1,57 @@
+services:
+
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Bo\CustomDashboardWidgets\:
+    resource: '../Classes/*'
+
+  dashboard.provider.recentlyCreatedPages:
+    class: 'Bo\CustomDashboardWidgets\Widgets\Provider\ListOfRecordsDataProvider'
+    arguments:
+      $table: 'pages'
+      $orderField: 'crdate'
+      $limit: 7
+
+  dashboard.widget.recentlyCreatedPages:
+    class: 'Bo\CustomDashboardWidgets\Widgets\ListOfRecordsWidget'
+    arguments:
+      $dataProvider: '@dashboard.provider.recentlyCreatedPages'
+      $view: '@dashboard.views.widget'
+    tags:
+      -
+        name: dashboard.widget
+        identifier: 'recentlyCreatedPages'
+        groupNames: 'custom'
+        title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.recentlyCreatedPages.title'
+        description: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.recentlyCreatedPages.description'
+        iconIdentifier: 'tx-custom_dashboard_widgets-extension-icon'
+        height: 'medium'
+        width: 'medium'
+
+  dashboard.provider.recentlyModifiedContent:
+    class: 'Bo\CustomDashboardWidgets\Widgets\Provider\ListOfRecordsDataProvider'
+    arguments:
+      $table: 'tt_content'
+      $orderField: 'tstamp'
+      $limit: 3
+
+  dashboard.widget.recentlyModifiedContent:
+    class: 'Bo\CustomDashboardWidgets\Widgets\ListOfRecordsWidget'
+    arguments:
+      $dataProvider: '@dashboard.provider.recentlyModifiedContent'
+      $view: '@dashboard.views.widget'
+      $options:
+        titleField: 'header'
+    tags:
+      -
+        name: dashboard.widget
+        identifier: 'recentlyModifiedContent'
+        groupNames: 'custom'
+        title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.recentlyModifiedContent.title'
+        description: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.recentlyModifiedContent.description'
+        iconIdentifier: 'tx-custom_dashboard_widgets-extension-icon'
+        height: 'small'
+        width: 'small'

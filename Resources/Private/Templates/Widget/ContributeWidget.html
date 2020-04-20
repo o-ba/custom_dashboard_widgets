@@ -1,0 +1,42 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Widget/Widget"/>
+<f:section name="main">
+    <div id="contribute-widget">
+        <f:if condition="{options.headline}">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1><f:translate key="{options.headline}"/></h1>
+                </div>
+            </div>
+        </f:if>
+        <f:if condition="{options.columns}">
+            <div class="row content-columns">
+                <f:for each="{options.columns}" as="column">
+                    <div class="col-xs-12 col-sm-6">
+                        <a href="{column.link}" target="_blank" title="{f:translate(key: column.headline)}">
+                            <f:if condition="{column.icon}">
+                                <core:icon identifier="{column.icon}" size="large" alternativeMarkupIdentifier="inline"/>
+                            </f:if>
+                            <f:if condition="{column.headline}">
+                                <h2><f:translate key="{column.headline}"/></h2>
+                            </f:if>
+                            <f:if condition="{column.text}">
+                                <p><f:translate key="{column.text}"/></p>
+                            </f:if>
+                        </a>
+                    </div>
+                </f:for>
+            </div>
+        </f:if>
+        <f:if condition="{options.author}">
+            <div class="row">
+                <div class="col-xs-12">
+                    <p><f:translate key="{options.author}"/></p>
+                </div>
+            </div>
+        </f:if>
+    </div>
+</f:section>
+</html>

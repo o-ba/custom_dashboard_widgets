@@ -24,14 +24,46 @@ and upload it in the extension manager module.
 
 ## 2. Further notice
 
-This extension is intended as an example extension for adding custom widgets (including custom templates), custom widget
-groups, custom dashboard presets and TSconfig presets for new editors.
+This extension is intended as an example extension for
+- adding custom widgets (including custom templates, custom stylesheets, ...)
+- adding custom data providers,
+- adding custom button providers,
+- extending core API classes,
+- adding custom widget groups,
+- adding custom dashboard presets,
+- adding TSconfig presets backend users,
+- and some more ...
 
-### Currently included widgets
+⚠️ *Important*️
+The included widgets and data providers *don't* evaluate any permissions! Therefore the widgets and data providers
+shouldn't be activated for editors and only be used by admins.
+
+### Included widgets
 - ``extensionInformation``: Simple information widget with a custom template using an extended button provider
-- ``typeOfPages``: Doughnut chart showing amount of pages per doktype
-- ``localExtensions``: Showing the amount of 3rd party extensions in the installation
+- ``failedSchedulerTasks``: Displays failed tasks and links to the module by using the extended button provider
+- ``recentlyCreatedPages``: Displays a defined number of recently created pages with edit link
+- ``recentlyModifiedContent``: Displays a defined number of recently modified content with edit link
+- ``localExtensions``: Displays the amount of 3rd party extensions in the installation
+- ``typeOfPages``: Doughnut chart showing amount of pages per page type
+- ``typeOfContent``: Bar chart showing amount of contet elements per content type
 - ``t3blog``: Listing of blog articles from [typo3.com][5]
+- ``contribute``: Information widget with information on how to contribute
+
+### Included DataProvider
+- ``ExtendedButtonProvider``: Extends the default button provider for an icon and the possibility to link to modules
+- ``FailedSchedulerTasksDataProvider``: A list data provider which fetches failed scheduler tasks
+- ``ListOfRecordsDataProvider``: Provides records of a configured table by respecting a given limit and order
+- ``LocalExtensionsDataProvider``: Provides the number of local extensions present in the system
+- ``RecordsByTypeDataProvider``: Provides chart data containing the amount of records for each record type
+
+### Extended API classes
+- ``WidgetApi``: Added a larger set of colors and a shuffle option
+
+### Screenshots
+
+![Custom Dashboard 1](Documentation/Images/Screenshot-1.png?raw=true "Custom Dashboard 1")
+![Custom Dashboard 2](Documentation/Images/Screenshot-2.png?raw=true "Custom Dashboard 2")
+![Custom Dashboard Selection](Documentation/Images/Screenshot-3.png?raw=true "Custom Dashboard Selection")
 
 ## 3. Credits
 

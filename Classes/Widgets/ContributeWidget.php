@@ -3,17 +3,17 @@ declare(strict_types=1);
 
 namespace Bo\CustomDashboardWidgets\Widgets;
 
-use TYPO3\CMS\Dashboard\Widgets\ButtonProviderInterface;
+use TYPO3\CMS\Dashboard\Widgets\AdditionalCssInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetConfigurationInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetInterface;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
- * Configuration for widget `extensionInformation`
+ * Configuration for widget `contribute`
  *
  * @author Oliver Bartsch <bo@cedev.de>
  */
-class ExtensionInformationWidget implements WidgetInterface
+class ContributeWidget implements WidgetInterface, AdditionalCssInterface
 {
     /** @var WidgetConfigurationInterface */
     private $configuration;
@@ -21,33 +21,32 @@ class ExtensionInformationWidget implements WidgetInterface
     /** @var StandaloneView */
     private $view;
 
-    /** @var ButtonProviderInterface|null */
-    private $buttonProvider;
-
     /** @var array */
     private $options;
 
     public function __construct(
         WidgetConfigurationInterface $configuration,
         StandaloneView $view,
-        $buttonProvider = null,
         array $options = []
     ) {
         $this->configuration = $configuration;
         $this->view = $view;
-        $this->buttonProvider = $buttonProvider;
         $this->options = $options;
     }
 
     public function renderWidgetContent(): string
     {
-        $this->view->setTemplate('Widget/ExtensionInformationWidget');
+        $this->view->setTemplate('Widget/ContributeWidget');
         $this->view->assignMultiple([
             'configuration' => $this->configuration,
-            'button' => $this->buttonProvider,
             'options' => $this->options
         ]);
 
         return $this->view->render();
+    }
+
+    public function getCssFiles(): array
+    {
+        return ['EXT:custom_dashboard_widgets/Resources/Public/Css/Widget/ContributeWidget.css'];
     }
 }

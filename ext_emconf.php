@@ -1,14 +1,14 @@
 <?php
 $EM_CONF[$_EXTKEY] = [
     'title' => 'Custom dashboard widgets',
-    'description' => 'Set of custom widgets for the new dashboard module.',
+    'description' => 'Set of custom widgets for the new dashboard module. Let\'s start creating your own!',
     'category' => 'be',
     'author' => 'Oliver Bartsch',
     'author_email' => 'bo@cedev.de',
     'author_company' => '',
-    'state' => 'beta',
+    'state' => 'stable',
     'clearCacheOnLoad' => true,
-    'version' => '0.2.0',
+    'version' => '1.0.0',
     'autoload' => [
         'psr-4' => [
             'Bo\\CustomDashboardWidgets\\' => 'Classes'

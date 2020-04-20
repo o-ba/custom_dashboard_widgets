@@ -8,7 +8,7 @@
 			"email": "bo@cedev.de"
 		}
 	],
-	"description": "Set of custom widgets for the new TYPO3 dashboard module.",
+	"description": "Set of custom widgets for the new dashboard module. Let's start creating your own!",
 	"require-dev": {
 		"roave/security-advisories": "dev-master"
 	},
@@ -17,10 +17,11 @@
 		"typo3/cms-core": "^10.4",
 		"typo3/cms-dashboard": "^10.4",
 		"typo3/cms-extensionmanager": "^10.4",
-        "typo3/cms-fluid": "^10.4"
+        "typo3/cms-fluid": "^10.4",
+        "typo3/cms-scheduler": "^10.4"
     },
 	"type": "typo3-cms-extension",
-	"version": "0.2.0",
+	"version": "1.0.0",
     "autoload": {
         "psr-4": {
             "Bo\\CustomDashboardWidgets\\": "Classes"

@@ -1,0 +1,54 @@
+services:
+
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Bo\CustomDashboardWidgets\:
+    resource: '../Classes/*'
+
+  dashboard.provider.typeOfPages:
+    class: 'Bo\CustomDashboardWidgets\Widgets\Provider\RecordsByTypeDataProvider'
+    arguments:
+      $table: 'pages'
+      $order: 'DESC'
+
+  dashboard.widget.typeOfPages:
+    class: 'TYPO3\CMS\Dashboard\Widgets\DoughnutChartWidget'
+    arguments:
+      $view: '@dashboard.views.widget'
+      $dataProvider: '@dashboard.provider.typeOfPages'
+    tags:
+      -
+        name: dashboard.widget
+        identifier: 'typeOfPages'
+        groupNames: 'custom'
+        title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.typeOfPages.title'
+        description: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.typeOfPages.description'
+        iconIdentifier: 'tx-custom_dashboard_widgets-extension-icon'
+        additionalCssClasses: 'dashboard-item--chart'
+        height: 'medium'
+        width: 'medium'
+
+  dashboard.provider.typeOfContent:
+    class: 'Bo\CustomDashboardWidgets\Widgets\Provider\RecordsByTypeDataProvider'
+    arguments:
+      $table: 'tt_content'
+
+  dashboard.widget.typeOfContent:
+    class: 'TYPO3\CMS\Dashboard\Widgets\BarChartWidget'
+    arguments:
+      $view: '@dashboard.views.widget'
+      $dataProvider: '@dashboard.provider.typeOfContent'
+    tags:
+      -
+        name: dashboard.widget
+        identifier: 'typeOfContent'
+        groupNames: 'custom'
+        title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.typeOfContent.title'
+        description: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.typeOfContent.description'
+        iconIdentifier: 'tx-custom_dashboard_widgets-extension-icon'
+        additionalCssClasses: 'dashboard-item--chart'
+        height: 'medium'
+        width: 'medium'

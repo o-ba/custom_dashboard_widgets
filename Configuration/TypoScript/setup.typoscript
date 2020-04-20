@@ -1,1 +1,4 @@
-module.tx_dashboard.view.templateRootPaths.110 = EXT:custom_dashboard_widgets/Resources/Private/Templates
+module.tx_dashboard.view {
+  templateRootPaths.110 = EXT:custom_dashboard_widgets/Resources/Private/Templates
+  partialRootPaths.110 = EXT:custom_dashboard_widgets/Resources/Private/Partials
+}

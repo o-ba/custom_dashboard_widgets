@@ -4,19 +4,23 @@ declare(strict_types=1);
 namespace Bo\CustomDashboardWidgets\Widgets;
 
 use TYPO3\CMS\Dashboard\Widgets\ButtonProviderInterface;
+use TYPO3\CMS\Dashboard\Widgets\ListDataProviderInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetConfigurationInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetInterface;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
- * Configuration for widget `extensionInformation`
+ * Configuration for widget `failedSchedulerTasks`
  *
  * @author Oliver Bartsch <bo@cedev.de>
  */
-class ExtensionInformationWidget implements WidgetInterface
+class ListOfFailedSchedulerTasksWidget implements WidgetInterface
 {
     /** @var WidgetConfigurationInterface */
     private $configuration;
+
+    /** @var \TYPO3\CMS\Dashboard\Widgets\ListDataProviderInterface */
+    private $dataProvider;
 
     /** @var StandaloneView */
     private $view;
@@ -29,11 +33,13 @@ class ExtensionInformationWidget implements WidgetInterface
 
     public function __construct(
         WidgetConfigurationInterface $configuration,
+        ListDataProviderInterface $dataProvider,
         StandaloneView $view,
         $buttonProvider = null,
         array $options = []
     ) {
         $this->configuration = $configuration;
+        $this->dataProvider = $dataProvider;
         $this->view = $view;
         $this->buttonProvider = $buttonProvider;
         $this->options = $options;
@@ -41,11 +47,12 @@ class ExtensionInformationWidget implements WidgetInterface
 
     public function renderWidgetContent(): string
     {
-        $this->view->setTemplate('Widget/ExtensionInformationWidget');
+        $this->view->setTemplate('Widget/ListOfFailedSchedulerTasksWidget');
         $this->view->assignMultiple([
             'configuration' => $this->configuration,
+            'tasks' => $this->dataProvider->getItems(),
             'button' => $this->buttonProvider,
-            'options' => $this->options
+            'options' => $this->options,
         ]);
 
         return $this->view->render();

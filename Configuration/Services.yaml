@@ -1,3 +1,9 @@
+imports:
+  - { resource: Backend/Widgets/ChartWidgets.yaml }
+  - { resource: Backend/Widgets/ListOfRecordsWidgets.yaml }
+  - { resource: Backend/Widgets/NumberWithIconWidgets.yaml }
+  - { resource: Backend/Widgets/RssWidgets.yaml }
+
 services:
 
   _defaults:
@@ -8,17 +14,10 @@ services:
   Bo\CustomDashboardWidgets\:
     resource: '../Classes/*'
 
-  dashboard.buttons.t3blog:
-    class: 'TYPO3\CMS\Dashboard\Widgets\Provider\ButtonProvider'
-    arguments:
-      $title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.t3blog.moreItems'
-      $link: 'https://typo3.com/blog'
-      $target: '_blank'
-
   dashboard.extendedButtons.extensionInformation:
     class: 'Bo\CustomDashboardWidgets\Widgets\Provider\ExtendedButtonProvider'
     arguments:
-      $title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.extensionInformation.codeInsights'
+      $title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.extensionInformation.button.title'
       $link: 'https://github.com/o-ba/custom_dashboard_widgets'
       $target: '_blank'
       $icon: 'actions-merge'
@@ -29,65 +28,69 @@ services:
       $view: '@dashboard.views.widget'
       $buttonProvider: '@dashboard.extendedButtons.extensionInformation'
       $options:
-        icon: 'tx-custom_dashboard_widgets-icon'
-        text: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.extensionInformation.text'
+        icon: 'tx-custom_dashboard_widgets-extension-icon'
+        text: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.extensionInformation.content.text'
     tags:
-      - name: dashboard.widget
+      -
+        name: dashboard.widget
         identifier: 'extensionInformation'
         groupNames: 'custom'
         title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.extensionInformation.title'
         description: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.extensionInformation.description'
-        iconIdentifier: 'tx-custom_dashboard_widgets-icon'
+        iconIdentifier: 'tx-custom_dashboard_widgets-extension-icon'
         height: 'small'
         width: 'medium'
 
-  dashboard.widget.typeOfPages:
-    class: 'TYPO3\CMS\Dashboard\Widgets\DoughnutChartWidget'
+  dashboard.extendedButtons.failedSchedulerTasks:
+    class: 'Bo\CustomDashboardWidgets\Widgets\Provider\ExtendedButtonProvider'
     arguments:
+      $title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.failedSchedulerTasks.button.title'
+      $link: 'system_txschedulerM1'
+      $moduleExtension: 'scheduler'
+      $icon: 'actions-arrow-right'
+
+  dashboard.widget.failedSchedulerTasks:
+    class: 'Bo\CustomDashboardWidgets\Widgets\ListOfFailedSchedulerTasksWidget'
+    arguments:
+      $dataProvider: '@Bo\CustomDashboardWidgets\Widgets\Provider\FailedSchedulerTasksDataProvider'
       $view: '@dashboard.views.widget'
-      $dataProvider: '@Bo\CustomDashboardWidgets\Widgets\Provider\TypeOfPagesChartDataProvider'
+      $buttonProvider: '@dashboard.extendedButtons.failedSchedulerTasks'
     tags:
-      - name: dashboard.widget
-        identifier: 'typeOfPages'
+      -
+        name: dashboard.widget
+        identifier: 'failedSchedulerTasks'
         groupNames: 'custom'
-        title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.typeOfPages.title'
-        description: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.typeOfPages.description'
-        iconIdentifier: 'tx-custom_dashboard_widgets-icon'
-        additionalCssClasses: 'dashboard-item--chart'
+        title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.failedSchedulerTasks.title'
+        description: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.failedSchedulerTasks.description'
+        iconIdentifier: 'tx-custom_dashboard_widgets-extension-icon'
         height: 'medium'
         width: 'medium'
 
-  dashboard.widget.localExtensions:
-    class: 'TYPO3\CMS\Dashboard\Widgets\NumberWithIconWidget'
-    arguments:
-      $dataProvider: '@Bo\CustomDashboardWidgets\Widgets\Provider\LocalExtensionsDataProvider'
-      $view: '@dashboard.views.widget'
-      $options:
-        title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.localExtensions.title'
-        subtitle: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.localExtensions.subtitle'
-        icon: 'tx-custom_dashboard_widgets-extensions-icon'
-    tags:
-      - name: dashboard.widget
-        identifier: 'localExtensions'
-        groupNames: 'custom'
-        title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.localExtensions.title'
-        description: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.localExtensions.description'
-        iconIdentifier: 'tx-custom_dashboard_widgets-icon'
-
-  dashboard.widget.t3blog:
-    class: 'TYPO3\CMS\Dashboard\Widgets\RssWidget'
+  dashboard.widget.contribute:
+    class: 'Bo\CustomDashboardWidgets\Widgets\ContributeWidget'
     arguments:
       $view: '@dashboard.views.widget'
-      $cache: '@cache.dashboard.rss'
-      $buttonProvider: '@dashboard.buttons.t3blog'
       $options:
-        feedUrl: 'https://typo3.com/blog/blog.recent.xml'
+        headline: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.contribute.content.headline'
+        author: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.contribute.content.author'
+        columns:
+          -
+            icon: 'tx-custom_dashboard_widgets-issue-icon'
+            headline: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.contribute.content.issue.headline'
+            text: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.contribute.content.issue.text'
+            link: 'https://github.com/o-ba/custom_dashboard_widgets/issues'
+          -
+            icon: 'tx-custom_dashboard_widgets-merge-icon'
+            headline: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.contribute.content.pullRequest.headline'
+            text: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.contribute.content.pullRequest.text'
+            link: 'https://github.com/o-ba/custom_dashboard_widgets/pulls'
     tags:
-      - name: dashboard.widget
-        identifier: 't3blog'
+      -
+        name: dashboard.widget
+        identifier: 'contribute'
         groupNames: 'custom'
-        title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.t3blog.title'
-        description: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.t3blog.description'
-        iconIdentifier: 'tx-custom_dashboard_widgets-icon'
+        title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.contribute.title'
+        description: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.contribute.description'
+        iconIdentifier: 'tx-custom_dashboard_widgets-extension-icon'
         height: 'large'
         width: 'medium'

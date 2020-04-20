@@ -12,19 +12,11 @@ call_user_func(static function () {
         "@import 'EXT:custom_dashboard_widgets/Configuration/TypoScript/setup.typoscript'"
     );
     $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
-    $iconRegistry->registerIcon(
-        'tx-custom_dashboard_widgets-icon',
-        \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-        ['source' => 'EXT:custom_dashboard_widgets/Resources/Public/Icons/Extension.svg']
-    );
-    $iconRegistry->registerIcon(
-        'tx-custom_dashboard_widgets-dashboard-icon',
-        \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-        ['source' => 'EXT:custom_dashboard_widgets/Resources/Public/Icons/Dashboard.svg']
-    );
-    $iconRegistry->registerIcon(
-        'tx-custom_dashboard_widgets-extensions-icon',
-        \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-        ['source' => 'EXT:custom_dashboard_widgets/Resources/Public/Icons/Extensions.svg']
-    );
+    foreach (['extension', 'dashboard', 'extensions', 'issue', 'merge'] as $icon) {
+        $iconRegistry->registerIcon(
+            'tx-custom_dashboard_widgets-' . $icon . '-icon',
+            \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+            ['source' => 'EXT:custom_dashboard_widgets/Resources/Public/Icons/' . \ucfirst($icon) . '.svg']
+        );
+    }
 });

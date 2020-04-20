@@ -1,0 +1,44 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+      xmlns:be="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Widget/Widget" />
+<f:section name="main">
+    <f:if condition="{records} && {table}">
+        <f:then>
+            <div id="list-of-records-widget" class="widget-table-wrapper">
+                <table class="widget-table">
+                    <f:for each="{records}" as="record">
+                        <f:variable name="title" value="{record.{options.titleField}}"/>
+                        <tr>
+                            <td>
+                                <be:link.editRecord uid="{record.uid}"
+                                                    table="{table}"
+                                                    title="{f:translate(key: 'widgets.listOfRecords.edit.title', extensionName: 'customDashboardWidgets', arguments: {0: title, 1: record.uid})}"
+                                                    returnUrl="{be:moduleLink(route: 'dashboard')}">
+                                    <core:iconForRecord table="{table}" row="{record}" />
+                                    <strong>{title}</strong>
+                                </be:link.editRecord>
+                            </td>
+                        </tr>
+                    </f:for>
+                </table>
+            </div>
+        </f:then>
+        <f:else>
+            <div class="row widget-no-items-found">
+                <div class="col-xs-12">
+                    <p>
+                        <f:translate key="widgets.listOfRecords.noRecordsFound" extensionName="CustomDashboardWidgets"/>
+                    </p>
+                </div>
+            </div>
+        </f:else>
+    </f:if>
+</f:section>
+<f:section name="footer">
+    <f:if condition="{button}">
+        <f:render partial="ExtendedButton" arguments="{button: button}"/>
+    </f:if>
+</f:section>
+</html>

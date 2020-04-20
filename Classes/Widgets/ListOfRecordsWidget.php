@@ -9,14 +9,17 @@ use TYPO3\CMS\Dashboard\Widgets\WidgetInterface;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
- * Configuration for widget `extensionInformation`
+ * Widget configuration for widgets displaying a list of records
  *
  * @author Oliver Bartsch <bo@cedev.de>
  */
-class ExtensionInformationWidget implements WidgetInterface
+class ListOfRecordsWidget implements WidgetInterface
 {
     /** @var WidgetConfigurationInterface */
     private $configuration;
+
+    /** @var ListOfRecordsDataProviderInterface */
+    private $dataProvider;
 
     /** @var StandaloneView */
     private $view;
@@ -24,16 +27,18 @@ class ExtensionInformationWidget implements WidgetInterface
     /** @var ButtonProviderInterface|null */
     private $buttonProvider;
 
-    /** @var array */
+    /** @var array  */
     private $options;
 
     public function __construct(
         WidgetConfigurationInterface $configuration,
+        ListOfRecordsDataProviderInterface $dataProvider,
         StandaloneView $view,
         $buttonProvider = null,
         array $options = []
     ) {
         $this->configuration = $configuration;
+        $this->dataProvider = $dataProvider;
         $this->view = $view;
         $this->buttonProvider = $buttonProvider;
         $this->options = $options;
@@ -41,9 +46,17 @@ class ExtensionInformationWidget implements WidgetInterface
 
     public function renderWidgetContent(): string
     {
-        $this->view->setTemplate('Widget/ExtensionInformationWidget');
+        $recordTable = $this->dataProvider->getTable();
+
+        if (!($this->options['titleField'] ?? false)) {
+            $this->options['titleField'] = $GLOBALS['TCA'][$recordTable]['ctrl']['label'];
+        }
+
+        $this->view->setTemplate('Widget/ListOfRecordsWidget');
         $this->view->assignMultiple([
             'configuration' => $this->configuration,
+            'records' => $this->dataProvider->getItems(),
+            'table' => $recordTable,
             'button' => $this->buttonProvider,
             'options' => $this->options
         ]);

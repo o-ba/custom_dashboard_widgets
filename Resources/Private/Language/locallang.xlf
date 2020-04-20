@@ -9,54 +9,86 @@
 			<trans-unit id="widgets.extensionInformation.description" xml:space="preserve">
 				<source>Shows some information regarding this extension.</source>
 			</trans-unit>
-			<trans-unit id="widgets.extensionInformation.codeInsights" xml:space="preserve">
+			<trans-unit id="widgets.extensionInformation.button.title" xml:space="preserve">
 				<source>Have a look at the code</source>
 			</trans-unit>
-			<trans-unit id="widgets.extensionInformation.text" xml:space="preserve">
+			<trans-unit id="widgets.extensionInformation.content.text" xml:space="preserve">
 				<source>
-                    This extension is an example on how to add custom widgets (including custom templates),
-                    widget groups, presets and how to create custom services or extend existing ones. You can use it
-                    as a kickstarter for your own widgets and dashboards.
+                    This extension is an example on how to add custom widgets (including custom templates, custom
+                    styles, and much more). You can also use it as a kickstarter for your own widgets and dashboards.
                 </source>
 			</trans-unit>
-			<trans-unit id="widgets.localExtensions.title" xml:space="preserve">
+            <trans-unit id="widgets.failedSchedulerTasks.title" xml:space="preserve">
+				<source>Recently failed scheduler tasks</source>
+			</trans-unit>
+            <trans-unit id="widgets.failedSchedulerTasks.description" xml:space="preserve">
+				<source>Shows a list of recently failed scheduler tasks.</source>
+			</trans-unit>
+            <trans-unit id="widgets.failedSchedulerTasks.button.title" xml:space="preserve">
+				<source>Go to the scheduler module</source>
+			</trans-unit>
+            <trans-unit id="widgets.failedSchedulerTasks.content.task.id" xml:space="preserve">
+				<source>Id</source>
+			</trans-unit>
+            <trans-unit id="widgets.failedSchedulerTasks.content.task.title" xml:space="preserve">
+				<source>Title</source>
+			</trans-unit>
+            <trans-unit id="widgets.failedSchedulerTasks.content.task.additionalInformation" xml:space="preserve">
+				<source>Information</source>
+			</trans-unit>
+            <trans-unit id="widgets.failedSchedulerTasks.content.task.executionTime" xml:space="preserve">
+				<source>Last execution</source>
+			</trans-unit>
+            <trans-unit id="widgets.failedSchedulerTasks.content.task.type" xml:space="preserve">
+				<source>Type</source>
+			</trans-unit>
+            <trans-unit id="widgets.failedSchedulerTasks.content.task.type.1" xml:space="preserve">
+				<source>Single</source>
+			</trans-unit>
+            <trans-unit id="widgets.failedSchedulerTasks.content.task.type.2" xml:space="preserve">
+				<source>Recurring</source>
+			</trans-unit>
+            <trans-unit id="widgets.failedSchedulerTasks.content.noFailedTasks" xml:space="preserve">
+				<source>Congratulations no failed tasks so far!</source>
+			</trans-unit>
+            <trans-unit id="widgets.recentlyCreatedPages.title" xml:space="preserve">
+				<source>Recently created pages</source>
+			</trans-unit>
+            <trans-unit id="widgets.recentlyCreatedPages.description" xml:space="preserve">
+				<source>Shows a list of recently created pages.</source>
+			</trans-unit>
+            <trans-unit id="widgets.recentlyModifiedContent.title" xml:space="preserve">
+				<source>Recently modified content</source>
+			</trans-unit>
+            <trans-unit id="widgets.recentlyModifiedContent.description" xml:space="preserve">
+				<source>Shows a list of recently modified content elements.</source>
+			</trans-unit>
+            <trans-unit id="widgets.listOfRecords.edit.title" xml:space="preserve">
+				<source>Edit %s [%s]</source>
+			</trans-unit>
+            <trans-unit id="widgets.listOfRecords.noRecordsFound" xml:space="preserve">
+				<source>Oops, no records found.</source>
+			</trans-unit>
+            <trans-unit id="widgets.localExtensions.title" xml:space="preserve">
 				<source>3rd party extensions</source>
 			</trans-unit>
-			<trans-unit id="widgets.localExtensions.subtitle" xml:space="preserve">
-				<source>Amount of 3rd party extensions</source>
-			</trans-unit>
-			<trans-unit id="widgets.localExtensions.description" xml:space="preserve">
+            <trans-unit id="widgets.localExtensions.description" xml:space="preserve">
 				<source>Shows the amount of 3rd party extensions present in the system.</source>
+			</trans-unit>
+            <trans-unit id="widgets.localExtensions.content.title" xml:space="preserve">
+				<source>Amount of 3rd party extensions</source>
 			</trans-unit>
             <trans-unit id="widgets.typeOfPages.title" xml:space="preserve">
 				<source>Type of pages</source>
 			</trans-unit>
             <trans-unit id="widgets.typeOfPages.description" xml:space="preserve">
-				<source>Shows the amount of pages per doktype in the system.</source>
+				<source>Shows the amount of pages per page type in the system.</source>
 			</trans-unit>
-            <trans-unit id="widgets.typeOfPages.1" xml:space="preserve">
-				<source>Default</source>
+            <trans-unit id="widgets.typeOfContent.title" xml:space="preserve">
+				<source>Type of content</source>
 			</trans-unit>
-            <trans-unit id="widgets.typeOfPages.3" xml:space="preserve">
-				<source>Link</source>
-			</trans-unit>
-            <trans-unit id="widgets.typeOfPages.4" xml:space="preserve">
-				<source>Shortcut</source>
-			</trans-unit>
-            <trans-unit id="widgets.typeOfPages.6" xml:space="preserve">
-				<source>BE user section</source>
-			</trans-unit>
-            <trans-unit id="widgets.typeOfPages.7" xml:space="preserve">
-				<source>Mountpoint</source>
-			</trans-unit>
-            <trans-unit id="widgets.typeOfPages.199" xml:space="preserve">
-				<source>Spacer</source>
-			</trans-unit>
-            <trans-unit id="widgets.typeOfPages.254" xml:space="preserve">
-				<source>Folder</source>
-			</trans-unit>
-            <trans-unit id="widgets.typeOfPages.255" xml:space="preserve">
-				<source>Recycler</source>
+            <trans-unit id="widgets.typeOfContent.description" xml:space="preserve">
+				<source>Shows the amount of content elements per content type in the system.</source>
 			</trans-unit>
             <trans-unit id="widgets.t3blog.title" xml:space="preserve">
 				<source>TYPO3 blog articles</source>
@@ -64,8 +96,32 @@
             <trans-unit id="widgets.t3blog.description" xml:space="preserve">
 				<source>Shows a list of blog articles from TYPO3.</source>
 			</trans-unit>
-            <trans-unit id="widgets.t3blog.moreItems" xml:space="preserve">
+            <trans-unit id="widgets.t3blog.button.title" xml:space="preserve">
 				<source>More TYPO3 blog articles</source>
+			</trans-unit>
+            <trans-unit id="widgets.contribute.title" xml:space="preserve">
+				<source>How to contribute</source>
+			</trans-unit>
+            <trans-unit id="widgets.contribute.description" xml:space="preserve">
+				<source>Shows information about how to contribute to this extension.</source>
+			</trans-unit>
+            <trans-unit id="widgets.contribute.content.headline" xml:space="preserve">
+				<source>Thanks for using this extension!️</source>
+			</trans-unit>
+            <trans-unit id="widgets.contribute.content.author" xml:space="preserve">
+				<source>Made with ❤️ by Oliver Bartsch</source>
+			</trans-unit>
+            <trans-unit id="widgets.contribute.content.issue.headline" xml:space="preserve">
+				<source>You found an issue?</source>
+			</trans-unit>
+            <trans-unit id="widgets.contribute.content.issue.text" xml:space="preserve">
+				<source>Just let me know by opening an issue report.</source>
+			</trans-unit>
+            <trans-unit id="widgets.contribute.content.pullRequest.headline" xml:space="preserve">
+				<source>You have any suggestions?</source>
+			</trans-unit>
+            <trans-unit id="widgets.contribute.content.pullRequest.text" xml:space="preserve">
+				<source>Just create a pull request on github.</source>
 			</trans-unit>
 
 			<trans-unit id="presets.custom.title" xml:space="preserve">
