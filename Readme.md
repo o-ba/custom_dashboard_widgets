@@ -22,6 +22,20 @@ If you are using a composer based TYPO3 project just run `composer require o-ba/
 You can download and install the extension in the extension manager module or download the ZIP file from [typo3.org][5]
 and upload it in the extension manager module.
 
+**First steps**
+
+After the installation switch to the dashboard module.
+
+If you have not set any dashboard yet, TYPO3 will create two dashboards automatically, which are defined in the presets.
+The default dashboard, shipped by core and the custom dashboard including all custom widgets from this extension.
+
+If you have already created some dashboards, simply create a new one by clicking the ``+`` button in the dashboard
+select tab bar and select ``Custom dashboard.`` in the wizard. This will create the same dashboard mentioned before with
+all widgets from this extension.
+
+You can also add some custom widgets to already existing dashboards. This is explained in detail in the
+[official documentation][6].
+
 ## 3. Further notice
 
 This extension is intended as an example extension for
