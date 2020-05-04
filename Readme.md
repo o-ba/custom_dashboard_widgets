@@ -75,6 +75,15 @@ activated for editors and only be used by admins.
 ### Extended API classes
 - ``WidgetApi``: Added a larger set of colors and a shuffle option
 
+### Dependencies
+Following widgets require additional TYPO3 packages which are suggested while installing this extension via composer.
+
+- ``failedSchedulerTasks``: Requires ``typo3/cms-scheduler``
+- ``localExtensions``: Requires ``typo3/cms-extensionmanager``
+
+The mentioned widgets are configured through ``services.php`` instead of ``services.yaml`` to only make them available
+if the required dependency is installed.
+
 ### Screenshots
 
 ![Custom Dashboard 1](Documentation/Images/Screenshot-1.png?raw=true "Custom Dashboard 1")

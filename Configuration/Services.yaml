@@ -1,7 +1,6 @@
 imports:
   - { resource: Backend/Widgets/ChartWidgets.yaml }
   - { resource: Backend/Widgets/ListOfRecordsWidgets.yaml }
-  - { resource: Backend/Widgets/NumberWithIconWidgets.yaml }
   - { resource: Backend/Widgets/RssWidgets.yaml }
 
 services:
@@ -39,31 +38,6 @@ services:
         description: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.extensionInformation.description'
         iconIdentifier: 'tx-custom_dashboard_widgets-extension-icon'
         height: 'small'
-        width: 'medium'
-
-  dashboard.extendedButtons.failedSchedulerTasks:
-    class: 'Bo\CustomDashboardWidgets\Widgets\Provider\ExtendedButtonProvider'
-    arguments:
-      $title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.failedSchedulerTasks.button.title'
-      $link: 'system_txschedulerM1'
-      $moduleExtension: 'scheduler'
-      $icon: 'actions-arrow-right'
-
-  dashboard.widget.failedSchedulerTasks:
-    class: 'Bo\CustomDashboardWidgets\Widgets\ListOfFailedSchedulerTasksWidget'
-    arguments:
-      $dataProvider: '@Bo\CustomDashboardWidgets\Widgets\Provider\FailedSchedulerTasksDataProvider'
-      $view: '@dashboard.views.widget'
-      $buttonProvider: '@dashboard.extendedButtons.failedSchedulerTasks'
-    tags:
-      -
-        name: dashboard.widget
-        identifier: 'failedSchedulerTasks'
-        groupNames: 'custom'
-        title: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.failedSchedulerTasks.title'
-        description: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.failedSchedulerTasks.description'
-        iconIdentifier: 'tx-custom_dashboard_widgets-extension-icon'
-        height: 'medium'
         width: 'medium'
 
   dashboard.widget.contribute:
