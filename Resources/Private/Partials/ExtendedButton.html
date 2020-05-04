@@ -1,4 +1,7 @@
-<a href="{button.extendedLink}" target="{button.target}" class="widget-cta">
+<a href="{button.extendedLink}"
+   class="widget-cta"
+   {f:if(condition: button.target, then: 'target="{button.target}"')}
+   {f:if(condition: "{button.target} == '_blank'", then: 'rel="noreferrer"')}>
     <f:if condition="{button.icon}">
         <core:icon identifier="{button.icon}" size="small" alternativeMarkupIdentifier="inline"/>&nbsp;
     </f:if>
