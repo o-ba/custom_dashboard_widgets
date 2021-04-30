@@ -1,28 +1,35 @@
 {
-	"name": "o-ba/custom_dashboard_widgets",
-	"license": "GPL-3.0",
-	"keywords": ["TYPO3 CMS"],
-	"authors": [
-		{
-			"name": "Oliver Bartsch",
-			"email": "bo@cedev.de"
-		}
-	],
-	"description": "Set of custom widgets for the new dashboard module. Let's start creating your own!",
-	"require-dev": {
-		"roave/security-advisories": "dev-master"
-	},
-	"require": {
-		"php": ">=7.2.0",
-		"typo3/cms-core": "^10.4",
-		"typo3/cms-dashboard": "^10.4"
+    "name": "o-ba/custom_dashboard_widgets",
+    "description": "Set of custom widgets for the new dashboard module. Let's start creating your own!",
+    "type": "typo3-cms-extension",
+    "license": "GPL-3.0",
+    "keywords": ["TYPO3 CMS"],
+    "authors": [
+        {
+            "name": "Oliver Bartsch",
+            "email": "bo@cedev.de"
+        }
+    ],
+    "require": {
+        "php": ">=7.2.0",
+        "typo3/cms-core": "^10.4",
+        "typo3/cms-dashboard": "^10.4"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
     },
     "suggest": {
         "typo3/cms-extensionmanager": "Needed for widget 'localExtensions'",
         "typo3/cms-scheduler": "Needed for widget 'failedSchedulerTasks'"
     },
-	"type": "typo3-cms-extension",
-	"version": "1.1.0",
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "custom_dashboard_widgets"
+        }
+    },
+    "replace": {
+        "typo3-ter/custom_dashboard_widgets": "self.version"
+    },
     "autoload": {
         "psr-4": {
             "Bo\\CustomDashboardWidgets\\": "Classes"
