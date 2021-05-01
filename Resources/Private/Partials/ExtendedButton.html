@@ -1,9 +1,6 @@
-<a href="{button.extendedLink}"
-   class="widget-cta"
-   {f:if(condition: button.target, then: 'target="{button.target}"')}
-   {f:if(condition: "{button.target} == '_blank'", then: 'rel="noreferrer"')}>
+<f:link.typolink parameter="{button.extendedLink}" target="{button.target}" class="widget-cta">
     <f:if condition="{button.icon}">
         <core:icon identifier="{button.icon}" size="small" alternativeMarkupIdentifier="inline"/>&nbsp;
     </f:if>
     {f:translate(id: button.title, default: button.title, extensionName: 'customDashboardWidgets')}
-</a>
+</f:link.typolink>

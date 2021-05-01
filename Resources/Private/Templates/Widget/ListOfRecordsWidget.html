@@ -17,7 +17,7 @@
                                                     title="{f:translate(key: 'widgets.listOfRecords.edit.title', extensionName: 'customDashboardWidgets', arguments: {0: title, 1: record.uid})}"
                                                     returnUrl="{be:moduleLink(route: 'dashboard')}">
                                     <core:iconForRecord table="{table}" row="{record}" />
-                                    <strong>{title}</strong>
+                                    <strong>{f:if(condition: title, then: title, else: '[{f:translate(key: \'LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.no_title\')}]')}</strong>
                                 </be:link.editRecord>
                             </td>
                         </tr>
