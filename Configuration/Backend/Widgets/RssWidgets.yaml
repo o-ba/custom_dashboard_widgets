@@ -15,6 +15,7 @@ services:
       $buttonProvider: '@dashboard.buttons.t3blog'
       $options:
         feedUrl: 'https://typo3.com/blog/blog.recent.xml'
+        refreshAvailable: true
     tags:
       -
         name: dashboard.widget

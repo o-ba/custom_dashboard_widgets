@@ -19,6 +19,8 @@ services:
     arguments:
       $view: '@dashboard.views.widget'
       $dataProvider: '@dashboard.provider.typeOfPages'
+      $options:
+        refreshAvailable: true
     tags:
       -
         name: dashboard.widget
@@ -41,6 +43,8 @@ services:
     arguments:
       $view: '@dashboard.views.widget'
       $dataProvider: '@dashboard.provider.typeOfContent'
+      $options:
+        refreshAvailable: true
     tags:
       -
         name: dashboard.widget
