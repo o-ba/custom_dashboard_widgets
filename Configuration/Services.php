@@ -10,15 +10,16 @@ use Bo\CustomDashboardWidgets\Widgets\Provider\LocalExtensionsDataProvider;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\DependencyInjection\Reference;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Dashboard\Widgets\NumberWithIconWidget;
+use TYPO3\CMS\Extensionmanager\Utility\ListUtility;
+use TYPO3\CMS\Scheduler\Scheduler;
 
 return static function (ContainerConfigurator $configurator, ContainerBuilder $containerBuilder) {
     $services = $configurator->services();
     $languagePath = 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:';
     $extensionIcon = 'tx-custom_dashboard_widgets-extension-icon';
 
-    if (ExtensionManagementUtility::isLoaded('extensionmanager')) {
+    if ($containerBuilder->hasDefinition(ListUtility::class)) {
         $services
             ->set('dashboard.widget.localExtensions')
             ->class(NumberWithIconWidget::class)
@@ -43,7 +44,7 @@ return static function (ContainerConfigurator $configurator, ContainerBuilder $c
             );
     }
 
-    if (ExtensionManagementUtility::isLoaded('scheduler')) {
+    if ($containerBuilder->hasDefinition(Scheduler::class)) {
         $services
             ->set('dashboard.extendedButtons.failedSchedulerTasks')
             ->class(ExtendedButtonProvider::class)
