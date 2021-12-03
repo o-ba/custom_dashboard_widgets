@@ -49,4 +49,9 @@ class ContributeWidget implements WidgetInterface, AdditionalCssInterface
     {
         return ['EXT:custom_dashboard_widgets/Resources/Public/Css/Widget/ContributeWidget.css'];
     }
+
+    public function getOptions(): array
+    {
+        return $this->options;
+    }
 }

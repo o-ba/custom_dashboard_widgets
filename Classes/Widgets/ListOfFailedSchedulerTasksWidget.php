@@ -66,4 +66,9 @@ class ListOfFailedSchedulerTasksWidget implements WidgetInterface, AdditionalCss
             'EXT:custom_dashboard_widgets/Resources/Public/Css/General/NoItemsFound.css'
         ];
     }
+
+    public function getOptions(): array
+    {
+        return $this->options;
+    }
 }
