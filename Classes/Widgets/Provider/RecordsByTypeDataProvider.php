@@ -20,9 +20,6 @@ use TYPO3\CMS\Dashboard\Widgets\ChartDataProviderInterface;
  */
 class RecordsByTypeDataProvider implements ChartDataProviderInterface
 {
-    /** @var LanguageService */
-    private $languageService;
-
     /** @var string */
     private $table;
 
@@ -35,12 +32,8 @@ class RecordsByTypeDataProvider implements ChartDataProviderInterface
     /** @var array */
     private $recordTypes;
 
-    public function __construct(
-        LanguageService $languageService,
-        string $table,
-        string $order = 'ASC'
-    ) {
-        $this->languageService = $languageService;
+    public function __construct(string $table, string $order = 'ASC')
+    {
         $this->table = $table;
         $this->order = $order;
         $this->typeField = $GLOBALS['TCA'][$this->table]['ctrl']['type'] ?? '';
@@ -93,10 +86,15 @@ class RecordsByTypeDataProvider implements ChartDataProviderInterface
     {
         foreach ($this->recordTypes as $recordType) {
             if ((string)($recordType[1] ?? '') === $type) {
-                return $this->languageService->sL($recordType[0] ?? '');
+                return $this->getLanguageService()->sL($recordType[0] ?? '');
             }
         }
 
         return '';
+    }
+
+    protected function getLanguageService(): LanguageService
+    {
+        return $GLOBALS['LANG'];
     }
 }
