@@ -15,7 +15,7 @@ use TYPO3\CMS\Extensionmanager\Utility\ListUtility;
 use TYPO3\CMS\Scheduler\Scheduler;
 
 return static function (ContainerConfigurator $configurator, ContainerBuilder $containerBuilder) {
-    $services = $configurator->services();
+    $services = $configurator->services()->defaults()->autowire()->autoconfigure();
     $languagePath = 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:';
     $extensionIcon = 'tx-custom_dashboard_widgets-extension-icon';
 
