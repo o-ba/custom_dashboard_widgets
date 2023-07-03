@@ -20,17 +20,10 @@ use TYPO3\CMS\Dashboard\Widgets\ChartDataProviderInterface;
  */
 class RecordsByTypeDataProvider implements ChartDataProviderInterface
 {
-    /** @var string */
-    private $table;
-
-    /** @var string */
-    private $order;
-
-    /** @var string */
-    private $typeField;
-
-    /** @var array */
-    private $recordTypes;
+    private string $table;
+    private string $order;
+    private mixed $typeField;
+    private mixed $recordTypes;
 
     public function __construct(string $table, string $order = 'ASC')
     {
@@ -78,8 +71,8 @@ class RecordsByTypeDataProvider implements ChartDataProviderInterface
             ->from($this->table)
             ->groupBy($this->typeField)
             ->orderBy('count', $this->order)
-            ->execute()
-            ->fetchAll();
+            ->executeQuery()
+            ->fetchAllAssociative();
     }
 
     private function getLabelForRecordType(string $type): string

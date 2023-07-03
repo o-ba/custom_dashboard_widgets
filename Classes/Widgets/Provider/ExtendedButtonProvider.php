@@ -18,14 +18,9 @@ use TYPO3\CMS\Dashboard\Widgets\Provider\ButtonProvider;
  */
 class ExtendedButtonProvider extends ButtonProvider
 {
-    /** @var string */
-    private $icon;
-
-    /** @var string */
-    private $moduleExtension;
-
-    /** @var bool */
-    private $moduleLinkParameters;
+    private string $icon;
+    private string $moduleExtension;
+    private array|bool $moduleLinkParameters;
 
     public function __construct(
         string $title,

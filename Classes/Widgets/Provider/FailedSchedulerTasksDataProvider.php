@@ -30,8 +30,8 @@ class FailedSchedulerTasksDataProvider implements ListDataProviderInterface
             ->from('tx_scheduler_task')
             ->where($queryBuilder->expr()->neq('lastexecution_failure', $queryBuilder->createNamedParameter('')))
             ->addOrderBy('lastexecution_time', 'DESC')
-            ->execute()
-            ->fetchAll();
+            ->executeQuery()
+            ->fetchAllAssociative();
 
         foreach ($tasks as $task) {
             $taskObject = \unserialize($task['serialized_task_object'], ['allowed_classes' => true]);

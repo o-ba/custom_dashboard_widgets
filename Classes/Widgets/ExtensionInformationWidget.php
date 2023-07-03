@@ -3,56 +3,49 @@ declare(strict_types=1);
 
 namespace Bo\CustomDashboardWidgets\Widgets;
 
+use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Backend\View\BackendViewFactory;
 use TYPO3\CMS\Dashboard\Widgets\ButtonProviderInterface;
+use TYPO3\CMS\Dashboard\Widgets\RequestAwareWidgetInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetConfigurationInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetInterface;
-use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
  * Configuration for widget `extensionInformation`
  *
  * @author Oliver Bartsch <bo@cedev.de>
  */
-class ExtensionInformationWidget implements WidgetInterface
+class ExtensionInformationWidget implements WidgetInterface, RequestAwareWidgetInterface
 {
-    /** @var WidgetConfigurationInterface */
-    private $configuration;
-
-    /** @var StandaloneView */
-    private $view;
-
-    /** @var ButtonProviderInterface|null */
-    private $buttonProvider;
-
-    /** @var array */
-    private $options;
+    protected ServerRequestInterface $request;
 
     public function __construct(
-        WidgetConfigurationInterface $configuration,
-        StandaloneView $view,
-        $buttonProvider = null,
-        array $options = []
+        protected readonly WidgetConfigurationInterface $configuration,
+        protected readonly BackendViewFactory $backendViewFactory,
+        protected readonly ?ButtonProviderInterface $buttonProvider = null,
+        protected array $options = []
     ) {
-        $this->configuration = $configuration;
-        $this->view = $view;
-        $this->buttonProvider = $buttonProvider;
-        $this->options = $options;
     }
 
     public function renderWidgetContent(): string
     {
-        $this->view->setTemplate('Widget/ExtensionInformationWidget');
-        $this->view->assignMultiple([
-            'configuration' => $this->configuration,
-            'button' => $this->buttonProvider,
-            'options' => $this->options
-        ]);
-
-        return $this->view->render();
+        return $this->backendViewFactory
+            ->create($this->request, ['typo3/cms-dashboard', 'o-ba/custom_dashboard_widgets'])
+            ->assignMultiple([
+                'configuration' => $this->configuration,
+                'button' => $this->buttonProvider,
+                'options' => $this->options
+            ])
+            ->render('Widget/ExtensionInformationWidget');
     }
 
     public function getOptions(): array
     {
         return $this->options;
+    }
+
+    public function setRequest(ServerRequestInterface $request): void
+    {
+        $this->request = $request;
     }
 }

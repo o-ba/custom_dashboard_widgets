@@ -21,19 +21,12 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class ListOfRecordsDataProvider implements ListOfRecordsDataProviderInterface
 {
-    /** @var string */
-    private $table;
+    private string $table;
+    private int $limit;
+    private string $orderField;
+    private string $order;
 
-    /** @var int */
-    private $limit;
-
-    /** @var string */
-    private $orderField;
-
-    /** @var string */
-    private $order;
-
-    public function __construct(string $table, $limit = 5, string $orderField = 'uid', string $order = 'DESC')
+    public function __construct(string $table, int $limit = 5, string $orderField = 'uid', string $order = 'DESC')
     {
         $this->table = $table;
         $this->limit = $limit;
@@ -56,7 +49,7 @@ class ListOfRecordsDataProvider implements ListOfRecordsDataProviderInterface
             ->from($this->table)
             ->setMaxResults($this->limit)
             ->addOrderBy($this->orderField, $this->order)
-            ->execute()
-            ->fetchAll();
+            ->executeQuery()
+            ->fetchAllAssociative();
     }
 }

@@ -8,7 +8,7 @@ $EM_CONF[$_EXTKEY] = [
     'author_company' => '',
     'state' => 'stable',
     'clearCacheOnLoad' => true,
-    'version' => '1.2.1',
+    'version' => '1.3.0',
     'autoload' => [
         'psr-4' => [
             'Bo\\CustomDashboardWidgets\\' => 'Classes'
@@ -16,7 +16,7 @@ $EM_CONF[$_EXTKEY] = [
     ],
     'constraints' => [
         'depends' => [
-            'typo3' => '10.4.0-11.5.99',
+            'typo3' => '12.4.0-12.4.99',
         ],
         'conflicts' => [],
         'suggests' => [

@@ -17,7 +17,6 @@ services:
   dashboard.widget.typeOfPages:
     class: 'TYPO3\CMS\Dashboard\Widgets\DoughnutChartWidget'
     arguments:
-      $view: '@dashboard.views.widget'
       $dataProvider: '@dashboard.provider.typeOfPages'
       $options:
         refreshAvailable: true
@@ -41,7 +40,6 @@ services:
   dashboard.widget.typeOfContent:
     class: 'TYPO3\CMS\Dashboard\Widgets\BarChartWidget'
     arguments:
-      $view: '@dashboard.views.widget'
       $dataProvider: '@dashboard.provider.typeOfContent'
       $options:
         refreshAvailable: true

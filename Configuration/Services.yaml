@@ -24,7 +24,6 @@ services:
   dashboard.widget.extensionInformation:
     class: 'Bo\CustomDashboardWidgets\Widgets\ExtensionInformationWidget'
     arguments:
-      $view: '@dashboard.views.widget'
       $buttonProvider: '@dashboard.extendedButtons.extensionInformation'
       $options:
         icon: 'tx-custom_dashboard_widgets-extension-icon'
@@ -43,7 +42,6 @@ services:
   dashboard.widget.contribute:
     class: 'Bo\CustomDashboardWidgets\Widgets\ContributeWidget'
     arguments:
-      $view: '@dashboard.views.widget'
       $options:
         headline: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.contribute.content.headline'
         author: 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:widgets.contribute.content.author'

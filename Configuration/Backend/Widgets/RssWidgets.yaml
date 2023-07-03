@@ -15,7 +15,6 @@ services:
   dashboard.widget.t3blog:
     class: 'TYPO3\CMS\Dashboard\Widgets\RssWidget'
     arguments:
-      $view: '@dashboard.views.widget'
       $cache: '@cache.dashboard.rss'
       $buttonProvider: '@dashboard.buttons.t3blog'
       $options:

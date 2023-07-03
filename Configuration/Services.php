@@ -15,7 +15,7 @@ use TYPO3\CMS\Extensionmanager\Utility\ListUtility;
 use TYPO3\CMS\Scheduler\Scheduler;
 
 return static function (ContainerConfigurator $configurator, ContainerBuilder $containerBuilder) {
-    $services = $configurator->services()->defaults()->autowire()->autoconfigure();
+    $services = $configurator->services()->defaults()->autowire()->autoconfigure()->public();
     $languagePath = 'LLL:EXT:custom_dashboard_widgets/Resources/Private/Language/locallang.xlf:';
     $extensionIcon = 'tx-custom_dashboard_widgets-extension-icon';
 
@@ -24,7 +24,6 @@ return static function (ContainerConfigurator $configurator, ContainerBuilder $c
             ->set('dashboard.widget.localExtensions')
             ->class(NumberWithIconWidget::class)
             ->arg('$dataProvider', new Reference(LocalExtensionsDataProvider::class))
-            ->arg('$view', new Reference('dashboard.views.widget'))
             ->arg(
                 '$options',
                 [
@@ -58,7 +57,6 @@ return static function (ContainerConfigurator $configurator, ContainerBuilder $c
             ->set('dashboard.widget.failedSchedulerTasks')
             ->class(ListOfFailedSchedulerTasksWidget::class)
             ->arg('$dataProvider', new Reference(FailedSchedulerTasksDataProvider::class))
-            ->arg('$view', new Reference('dashboard.views.widget'))
             ->arg('$buttonProvider', new Reference('dashboard.extendedButtons.failedSchedulerTasks'))
             ->tag(
                 'dashboard.widget',

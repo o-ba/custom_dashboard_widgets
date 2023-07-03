@@ -3,46 +3,30 @@ declare(strict_types=1);
 
 namespace Bo\CustomDashboardWidgets\Widgets;
 
+use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Backend\View\BackendViewFactory;
 use TYPO3\CMS\Dashboard\Widgets\AdditionalCssInterface;
 use TYPO3\CMS\Dashboard\Widgets\ButtonProviderInterface;
+use TYPO3\CMS\Dashboard\Widgets\RequestAwareWidgetInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetConfigurationInterface;
 use TYPO3\CMS\Dashboard\Widgets\WidgetInterface;
-use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
  * Widget configuration for widgets displaying a list of records
  *
  * @author Oliver Bartsch <bo@cedev.de>
  */
-class ListOfRecordsWidget implements WidgetInterface, AdditionalCssInterface
+class ListOfRecordsWidget implements WidgetInterface, AdditionalCssInterface, RequestAwareWidgetInterface
 {
-    /** @var WidgetConfigurationInterface */
-    private $configuration;
-
-    /** @var ListOfRecordsDataProviderInterface */
-    private $dataProvider;
-
-    /** @var StandaloneView */
-    private $view;
-
-    /** @var ButtonProviderInterface|null */
-    private $buttonProvider;
-
-    /** @var array  */
-    private $options;
+    protected ServerRequestInterface $request;
 
     public function __construct(
-        WidgetConfigurationInterface $configuration,
-        ListOfRecordsDataProviderInterface $dataProvider,
-        StandaloneView $view,
-        $buttonProvider = null,
-        array $options = []
+        protected readonly WidgetConfigurationInterface $configuration,
+        protected readonly ListOfRecordsDataProviderInterface $dataProvider,
+        protected readonly BackendViewFactory $backendViewFactory,
+        protected readonly ?ButtonProviderInterface $buttonProvider = null,
+        protected array $options = []
     ) {
-        $this->configuration = $configuration;
-        $this->dataProvider = $dataProvider;
-        $this->view = $view;
-        $this->buttonProvider = $buttonProvider;
-        $this->options = $options;
     }
 
     public function renderWidgetContent(): string
@@ -53,16 +37,16 @@ class ListOfRecordsWidget implements WidgetInterface, AdditionalCssInterface
             $this->options['titleField'] = $GLOBALS['TCA'][$recordTable]['ctrl']['label'] ?? '';
         }
 
-        $this->view->setTemplate('Widget/ListOfRecordsWidget');
-        $this->view->assignMultiple([
-            'configuration' => $this->configuration,
-            'records' => $this->dataProvider->getItems(),
-            'table' => $recordTable,
-            'button' => $this->buttonProvider,
-            'options' => $this->options
-        ]);
-
-        return $this->view->render();
+        return $this->backendViewFactory
+            ->create($this->request, ['typo3/cms-dashboard', 'o-ba/custom_dashboard_widgets'])
+            ->assignMultiple([
+                'configuration' => $this->configuration,
+                'records' => $this->dataProvider->getItems(),
+                'table' => $recordTable,
+                'button' => $this->buttonProvider,
+                'options' => $this->options
+            ])
+            ->render('Widget/ListOfRecordsWidget');
     }
 
     public function getCssFiles(): array
@@ -73,5 +57,10 @@ class ListOfRecordsWidget implements WidgetInterface, AdditionalCssInterface
     public function getOptions(): array
     {
         return $this->options;
+    }
+
+    public function setRequest(ServerRequestInterface $request): void
+    {
+        $this->request = $request;
     }
 }
